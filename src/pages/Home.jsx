@@ -6,19 +6,31 @@ import TruckTypes from '../components/TruckTypes'
 import Operation from '../components/Operation'
 import TruckServices from '../components/TruxkService'
 import TruckLayout from '../components/TrackLayout'
-// import ArticleSection from '../components/ArticalSection'
+import ArticleSection from '../components/ArticalSection'
+import ContactForm from '../components/Contact'
+import TrustSection from '../components/TrustSection'
+import Testimonials from '../components/Testimonials'
+import CallToAction from '../components/CallToAction'
+import Footer from '../components/Footer'
+import CopyRight from '../components/CopyRight'
 
 const Home = () => {
   return (
     <div>
-        <HeroSection/>
+         <HeroSection/>
         <About/>
         <GettingStarted/>
         <TruckTypes/>
         <Operation/>
         <TruckServices/>
-        <TruckLayout/>
-        {/* <ArticleSection/> */}
+        <TruckLayout/> 
+        <ArticleSection/>
+        <ContactForm/>
+         <TrustSection/>
+        <Testimonials/> 
+        <CallToAction/>
+        <Footer/>
+        <CopyRight/>
     </div>
   )
 }
