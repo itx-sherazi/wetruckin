@@ -22,27 +22,27 @@ const FooterBottom = () => {
   };
 
   return (
-    <div className="w-full bg-blue-500 py-4 relative">
+    <div className="w-full bg-blue-600 py-4 relative">
       {/* Copyright & Powered By */}
       <div className="text-center">
-        <p className="text-white text-lg">
+        <p className="text-white text-lg font-semibold">
           WeTruckin © 2023, All Rights Reserved
         </p>
         <a
           href="https://savorsmarketing.com"
-          className="underline font-semibold text-black"
+          className="underline font-bold text-red-500 hover:text-red-700 transition duration-300"
         >
           Powered By SavorsMarketing.com
         </a>
       </div>
 
-      {/* Scroll to Top Button (Only Visible on Scroll) */}
+      {/* Scroll to Top Button */}
       {isVisible && (
         <button
-          className="fixed right-6 bottom-6 bg-white p-3 rounded-full shadow-lg transition-opacity duration-300"
+          className="fixed right-6 bottom-6 bg-red-500 p-3 rounded-full shadow-lg transition-opacity duration-300 hover:bg-red-700"
           onClick={scrollToTop}
         >
-          <FaArrowUp className="text-black" />
+          <FaArrowUp className="text-white" />
         </button>
       )}
     </div>
