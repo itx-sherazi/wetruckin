@@ -62,17 +62,16 @@ const About = () => {
             ].map((item, index) => (
               <div
                 key={index}
-                className={`w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 p-2 rounded-lg` }
-      
-                
+                className={`w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 p-2 rounded-lg`}
+
+
               >
                 <img
                   src={item.src}
                   alt=""
-                  className={`w-full h-full object-contain transition-transform hover:scale-105 ${
-                    item.color === "blue"
-                     
-                  }`}
+                  className={`w-full h-full object-contain transition-transform hover:scale-105 ${item.color === "blue"
+
+                    }`}
                 />
               </div>
             ))}
