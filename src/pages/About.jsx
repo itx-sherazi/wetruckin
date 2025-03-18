@@ -201,33 +201,31 @@ style={{
       </div>
 
       
-
-      {/* Timeline Container */}
-      <div className="relative w-full max-w-6xl mx-auto py-12   px-4 sm:px-6 lg:px-8">
-  {/* Timeline Line */}
-  <div className="absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-dotted border-teal-600"></div>
-  
-  {/* Start Red Dot */}
-  <div className="absolute left-1/2 top-0 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 w-6 h-6 rounded-full"></div>
+      <div className="relative w-full max-w-6xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+  {/* Timeline Line Container */}
+  <div className="absolute left-1/2 transform -translate-x-1/2 h-full">
+    <div className="h-full border-l-2 border-dotted border-red-400"></div>
+  </div>
 
   {/* Timeline Items */}
-  <div className="space-y-30">
+  <div className="space-y-24">
     {/* Item 1 */}
     <div className="relative">
-      {/* Numbered Dot */}
-      <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-teal-600 text-white w-10 h-10 flex items-center justify-center rounded-md text-lg font-bold">
+    <div className="pb-1">
+<div className="absolute  left-1/2 top-0 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 text-white w-10 h-10 flex items-center justify-center rounded-md text-lg font-bold z-10">
         1
       </div>
+</div>
       
-      {/* Content Grid with Center Dot */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8  mt-10 items-center relative">
-        {/* Small Center Dot */}
-        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-teal-600 w-4 h-4 rounded-full z-10"></div>
+      {/* Content Grid with Adjusted Spacing */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mt-12 items-center relative">
+        {/* Center Connecting Dot */}
+        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 w-4 h-4 rounded-full z-10"></div>
         
         {/* Text Box */}
-        <div className="bg-white p-6 rounded-lg shadow-lg">
-          <h3 className="text-xl font-semibold text-blue-500">2021: Company Launch and Team Building</h3>
-          <ul className="mt-4 text-gray-700">
+        <div className="bg-white p-6 rounded-lg shadow-lg min-h-[270px] flex flex-col justify-center">
+          <h3 className="text-xl font-semibold text-blue-500 mb-4">2021: Company Launch and Team Building</h3>
+          <ul className="text-gray-700 space-y-2">
             <li>✅ Established WeTruckin as a new truck dispatching company in the USA.</li>
             <li>✅ Built a team of experienced dispatchers.</li>
             <li>✅ Conducted market research to identify truck drivers' needs.</li>
@@ -236,11 +234,11 @@ style={{
         </div>
 
         {/* Image */}
-        <div className="bg-white p-3 rounded-lg shadow-lg flex justify-center">
+        <div className="bg-white p-3 rounded-lg shadow-lg h-[270px] overflow-hidden">
           <img
             src="https://wetruckin.com/wp-content/uploads/2023/04/67.jpg"
             alt="Teamwork"
-            className="rounded-lg w-full h-50"
+            className="w-full h-60 object-cover rounded-lg"
           />
         </div>
       </div>
@@ -248,59 +246,61 @@ style={{
 
     {/* Item 2 */}
     <div className="relative">
-      <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-teal-600 text-white w-10 h-10 flex items-center justify-center rounded-md text-lg font-bold">
+    <div className="pb-5">
+<div className="absolute  left-1/2 top-0 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 text-white w-10 h-10 flex items-center justify-center rounded-md text-lg font-bold z-10">
         2
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center relative">
-        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-teal-600 w-4 h-4 rounded-full z-10"></div>
-        <div className="bg-white p-6 rounded-lg shadow-lg">
-          <h3 className="text-xl font-semibold text-blue-500">2022: Expansion and Growth</h3>
-          <ul className="mt-4 text-gray-700 space-y-2">
+</div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mt-12 items-center relative">
+        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 w-4 h-4 rounded-full z-10"></div>
+        <div className="bg-white p-6 rounded-lg shadow-lg min-h-[270px] flex flex-col justify-center">
+          <h3 className="text-xl font-semibold text-blue-500 mb-4">2022: Expansion and Growth</h3>
+          <ul className="text-gray-700 space-y-2">
             <li>✅ Expanded our services to new regions.</li>
             <li>✅ Increased our team size by 50%.</li>
             <li>✅ Partnered with major logistics companies.</li>
             <li>✅ Improved our technology platform.</li>
           </ul>
         </div>
-        <div className="bg-white p-3 rounded-lg shadow-lg flex justify-center">
+        <div className="bg-white p-3 rounded-lg shadow-lg h-[270px] overflow-hidden">
           <img
             src="https://wetruckin.com/wp-content/uploads/2023/04/67.jpg"
             alt="Expansion"
-            className="rounded-lg w-full h-50"
+            className="w-full h-60 object-cover rounded-lg"
           />
         </div>
       </div>
     </div>
 
     {/* Item 3 */}
+    
     <div className="relative">
-      <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-teal-600 text-white w-10 h-10 flex items-center justify-center rounded-md text-lg font-bold">
+<div className="pb-5">
+<div className="absolute  left-1/2 top-0 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 text-white w-10 h-10 flex items-center justify-center rounded-md text-lg font-bold z-10">
         3
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center  relative">
-        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-teal-600 w-4 h-4 rounded-full z-10"></div>
-        <div className="bg-white p-6 rounded-lg shadow-lg">
-          <h3 className="text-xl font-semibold text-blue-500">2023: Innovation and Leadership</h3>
-          <ul className="mt-4 text-gray-700 space-y-2">
+</div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mt-12 items-center relative">
+        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 w-4 h-4 rounded-full z-10"></div>
+        <div className="bg-white p-6 rounded-lg shadow-lg min-h-[270px] flex flex-col justify-center">
+          <h3 className="text-xl font-semibold text-blue-500 mb-4">2023: Innovation and Leadership</h3>
+          <ul className="text-gray-700 space-y-2">
             <li>✅ Introduced AI-based dispatching solutions.</li>
             <li>✅ Recognized as a leader in the industry.</li>
             <li>✅ Achieved 100% customer satisfaction.</li>
             <li>✅ Expanded our service offerings.</li>
           </ul>
         </div>
-        <div className="bg-white p-3 rounded-lg shadow-lg flex justify-center">
+        <div className="bg-white p-3 rounded-lg shadow-lg h-[270px] overflow-hidden">
           <img
             src="https://wetruckin.com/wp-content/uploads/2023/04/67.jpg"
             alt="Innovation"
-            className="rounded-lg w-full h-50"
+            className="w-full h-60 object-cover rounded-lg"
           />
         </div>
       </div>
     </div>
   </div>
-
-  {/* End Red Dot */}
-  <div className="absolute left-1/2 bottom-0 transform -translate-x-1/2 translate-y-1/2 bg-red-500 w-6 h-6 rounded-full"></div>
 </div>
 
     </div>
