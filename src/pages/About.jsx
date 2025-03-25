@@ -308,72 +308,11 @@ style={{
 </div>
 
     </div>
-    {/* text image section */}
-    <div className="flex flex-col lg:flex-row items-center bg-gray-100 p-6 rounded-xl shadow-lg max-w-6xl mx-auto">
-      {/* Left Image */}
-      <div className="w-full lg:w-1/2 p-4">
-        <img
-          src="https://wetruckin.com/wp-content/uploads/2023/04/kendall-henderson-Pj6TgpS_Vt4-unsplash-1200x800.jpg"
-          alt="Truck dispatching"
-          width={600}
-          height={400}
-          className="rounded-xl shadow-md w-full h-auto"
-        />
-      </div>
 
-      {/* Right Text Content */}
-      <div className="w-full lg:w-1/2 p-4 text-gray-800">
-        <h2 className="text-1xl lg:text-2xl font-bold text-gray-900">
-          Efficient Dispatching Services Nationwide
-        </h2>
-        <h3 className="text-xl font-semibold text-blue-600 mt-2">
-          Choose <span className="text-red-600">WeTruckin</span> Today!
-        </h3>
-        <p className=" text-gray-700">
-          We are a premier truck dispatching company based in the USA. Our team of experienced dispatchers provides top-notch dispatching services to truck drivers and fleet owners nationwide.
-        </p>
-        <p className=" text-gray-700">
-          At <span className="text-blue-600 font-semibold">WeTruckin</span>, we understand that truck dispatching is a critical aspect of the transportation industry. That’s why we strive to provide reliable and efficient dispatching services to our clients. We have a proven track record of helping truck drivers and fleet owners save time, money, and resources by efficiently managing their dispatch needs.
-        </p>
-        <p className=" text-gray-700">
-          Our team consists of experienced dispatchers who have a deep understanding of the transportation industry. They are skilled in managing load assignments, tracking shipment progress, and communicating with truck drivers and shippers to ensure timely deliveries. Our dispatchers work closely with our clients to understand their specific needs and tailor our services accordingly.
-        </p>
-      </div>
-    </div>
-    {/* artical section */}
-    <div className="flex flex-col items-center bg-gray-100 p-6 rounded-2xl shadow-lg max-w-6xl mx-auto text-center">
-      {/* Heading */}
-      <h2 className="text-3xl font-bold text-black">
-        Revolutionize Your Transportation Experience with Our Cutting-Edge Dispatching Technologies and
-        <span className="text-blue-600"> Exceptional Customer Service</span>
-      </h2>
-      
-      {/* Paragraphs */}
-      <p className="text-gray-700 mt-4 max-w-5xl">
-        We use the latest dispatching technologies and tools to ensure that our clients receive the most
-        efficient and reliable dispatching services possible. We continuously monitor load assignments and
-        shipment progress to ensure that everything is on track and running smoothly. We also provide real-time
-        updates to our clients, so they always know the status of their shipments. At
-        <span className="text-red-600 font-semibold"> WeTruckin</span>, we are committed to providing exceptional
-        customer service. We take pride in our ability to build long-term relationships with our clients based
-        on trust, transparency, and reliability.
-      </p>
-      
-      <p className="text-gray-700 mt-4 max-w-5xl">
-        Our goal is to help our clients succeed by providing them with the best dispatching services in the
-        industry. If you are a truck driver or fleet owner looking for reliable and efficient dispatching
-        services, look no further than <span className="text-blue-600 font-semibold">WeTruckin</span>. Contact us
-        today to learn more about our services and how we can help you achieve your transportation goals.
-      </p>
-    </div>
-    <TrustSection/>
-        <Testimonials/> 
-        <CallToAction/>
-        <Footer/>
-        <CopyRight/>
 </div>
     
   );
 };
 
 export default HeroSection;
+

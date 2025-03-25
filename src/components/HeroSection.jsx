@@ -3,24 +3,19 @@ import { RiSendPlaneFill } from "react-icons/ri";
 import { CiBadgeDollar } from "react-icons/ci";
 import { RxCross1 } from "react-icons/rx";
 import { Link } from "react-router-dom";
-
+import { FiMenu, FiX } from 'react-icons/fi';
 const HeroSection = () => {
   const [scrolling, setScrolling] = useState(false);
-  const [hoveredItem, setHoveredItem] = useState(null);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [openMobileDropdown, setOpenMobileDropdown] = useState(null);
 
-  const colors = {
-    red: "#B31942",
-    white: "#FFFFFF",
-    blue: "#0A3161"
-  };
-
-  const dropdownContent = {
-    TRUCKS: ["Dry Vans", "Flatbeds", "Step Decks", "Hot Shots"],
-    SERVICES: ["Freight Brokerage", "Dispatch Services", "Tracking System"]
-  };
-
+  const [activeTab, setActiveTab] = useState(
+    localStorage.getItem("activeTab") || "shippers"
+  );
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+  // Jab bhi tab change ho, localStorage main save ho jaye
+  useEffect(() => {
+    localStorage.setItem("activeTab", activeTab);
+  }, [activeTab]);
   useEffect(() => {
     const handleScroll = () => {
       setScrolling(window.scrollY > 50);
@@ -35,110 +30,140 @@ const HeroSection = () => {
         backgroundImage: `linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.85) 100%), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSisXsbbTI3d1uJOG3a-IbyIbpAn6qbP74QRA&s')`,
       }}
     >
-      {/* Header Section */}
-      <header className={`fixed top-0 left-0 right-0 z-50 px-6 sm:px-10 flex justify-between items-center transition-all duration-300 ${scrolling ? "bg-white shadow-md py-3" : "bg-transparent py-4"
-        }`}>
-        <img
-          src="https://wetruckin.com/wp-content/uploads/2023/04/2.png"
-          alt="WeTruckIn Logo"
-          className="w-32 sm:w-48"
-        />
+<header
+  className={`fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 md:px-6 flex items-center ${
+    scrolling ? "bg-white py-3" : "bg-white py-3"
+  }`}
+>
+  {/* Logo */}
+  <img
+    src="https://wetruckin.com/wp-content/uploads/2023/04/2.png"
+    alt="WeTruckIn Logo"
+    className="w-32 md:w-48"
+  />
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-3 items-center">
-          {['HOME', '|', 'ABOUT', 'SERVICES', '|', 'TRUCKS', '|', 'CARRIER SETUP'].map((item) => (
-            <div
-              key={item}
-              className="relative"
-              onMouseEnter={() => ['TRUCKS', 'SERVICES'].includes(item) && setHoveredItem(item)}
-              onMouseLeave={() => setHoveredItem(null)}
-            >
-              <a
-                href="#"
-                className={`${(hoveredItem === item || openMobileDropdown === item)
-                    ? "text-[#B31942]"
-                    : scrolling ? "text-gray-800" : "text-white"
-                  } hover:text-[#B31942] transition-colors`}
-              >
-                {item}
-              </a>
+  {/* Desktop Navigation */}
+  <div className="hidden md:flex flex-1 items-center justify-center gap-2 ml-4">
+    {/* Desktop Tabs */}
+    <div className="flex space-x-1">
+      <button
+        onClick={() => setActiveTab("carriers")}
+        className={`px-6 py-2 text-lg font-medium transition-all ${
+          activeTab === "carriers" 
+            ? "text-white bg-[#B31942]" 
+            : "text-white bg-gray-500 hover:text-[#002868] hover:bg-gray-400"
+        }`}
+      >
+        Carriers/Owner Operators
+      </button>
+      
+      <button
+        onClick={() => setActiveTab("shippers")}
+        className={`px-6 py-2 text-lg font-medium transition-all ${
+          activeTab === "shippers" 
+            ? "text-white bg-[#B31942]" 
+            : "text-white bg-gray-500 hover:text-[#002868] hover:bg-gray-400"
+        }`}
+      >
+        Shippers/Brokers
+      </button>
+    </div>
+  </div>
 
-              {['TRUCKS', 'SERVICES'].includes(item) && (
-                <div className={`absolute top-full left-0 bg-white shadow-lg rounded-lg pt-4 mt-4 min-w-[200px] transition-all duration-300 ${hoveredItem === item ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-2"
-                  }`}>
-                  {dropdownContent[item].map((subItem) => (
-                    <a
-                      key={subItem}
-                      href="#"
-                      className="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md hover:text-[#B31942]"
-                    >
-                      {subItem}
-                    </a>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-        </nav>
+  {/* Call Now Button */}
+  <button className="ml-auto bg-[#B31942] text-white px-8 py-2 rounded-lg hover:bg-[#8A0B32] hidden md:block">
+    CALL NOW
+  </button>
 
-        {/* Mobile Hamburger Icon */}
-        <button
-          className="md:hidden text-white z-50"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          {isMenuOpen ? (
-            <RxCross1 className="w-6 h-6" />
-          ) : (
-            <div className="space-y-1">
-              <div className="w-6 h-[2px] bg-white"></div>
-              <div className="w-6 h-[2px] bg-white"></div>
-              <div className="w-6 h-[2px] bg-white"></div>
-            </div>
-          )}
-        </button>
+  {/* Mobile Menu Button */}
+  <button
+    className="md:hidden text-black p-2 ml-auto"
+    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+  >
+    {isMobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+  </button>
+</header>
 
-        <button className="hidden md:block bg-[#B31942] text-white px-6 py-2 rounded-lg hover:bg-[#8A0B32] transition-colors">
-          CALL NOW
-        </button>
-      </header>
+{/* Desktop Sub Header */}
+<div className={`hidden md:block fixed top-[68px] left-0 right-0 z-40 bg-blue-500 rounded-b-2xl transition-all duration-300 py-3`}> 
+  <div className="max-w-7xl mx-auto px-4">
+    <div className="flex justify-between text-white text-lg font-semibold space-x-8 overflow-x-auto scrollbar-hide">
+      {activeTab === 'carriers' ? (
+        <>
+          <Link to='/findload' className="hover:text-red-500 transition-all">Find Loads</Link>
+          <Link to='/loadmaps' className="hover:text-red-500 transition-all">Loads Map</Link>
+          <Link to='/posttruck' className="hover:text-red-500 transition-all">Post Truck</Link>
+          <Link to='/viewtruck' className="hover:text-red-500 transition-all">View My Truck</Link>
+        </>
+      ) : (
+        <>
+          <Link to='/findtruck' className="hover:text-red-500 transition-all">Find Trucks</Link>
+          <Link to='/truckmap' className="hover:text-red-500 transition-all">Track Maps</Link>
+          <Link to='/postlead' className="hover:text-red-500 transition-all">Post Loads</Link>
+          <Link to='/viewload' className="hover:text-red-500 transition-all">View My Loads</Link>
+        </>
+      )}
+    </div>
+  </div>
+</div>
 
-      {/* Mobile Sidebar */}
-      <div className={`fixed top-0 left-0 h-full w-64 bg-[#0A3161] z-40 transform transition-transform duration-300 ${isMenuOpen ? "translate-x-0" : "-translate-x-full"
-        }`}>
-        <div className="p-6">
-          <nav className="flex flex-col space-y-4 mt-12">
-            {['HOME', 'ABOUT', 'SERVICES', 'TRUCKS', 'CARRIER SETUP'].map((item) => (
-              <div key={item} className="border-b border-[#B31942]">
-                <button
-                  className={`w-full text-left p-3 text-white ${openMobileDropdown === item ? "text-[#B31942]" : ""
-                    }`}
-                  onClick={() => setOpenMobileDropdown(openMobileDropdown === item ? null : item)}
-                >
-                  {item}
-                </button>
+{/* Mobile Menu */}
+{isMobileMenuOpen && (
+  <div className="fixed top-16 left-0 right-0 bg-white shadow-md p-4 md:hidden z-50">
+    {/* Tab Selection */}
+    <div className="flex flex-col space-y-3">
+      <button
+        onClick={() => setActiveTab("carriers")}
+        className={`py-3 px-4 rounded text-left ${
+          activeTab === "carriers" 
+            ? "bg-[#B31942] text-white" 
+            : "text-gray-700"
+        }`}
+      >
+        Carriers/Owner Operators
+      </button>
 
-                {['TRUCKS', 'SERVICES'].includes(item) && (
-                  <div className={`overflow-hidden transition-all duration-300 ${openMobileDropdown === item ? "max-h-96" : "max-h-0"
-                    }`}>
-                    {dropdownContent[item].map((subItem) => (
-                      <a
-                        key={subItem}
-                        href="#"
-                        className="block px-6 py-2 text-gray-300 hover:text-[#B31942]"
-                      >
-                        {subItem}
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-          </nav>
+      <button
+        onClick={() => setActiveTab("shippers")}
+        className={`py-3 px-4 rounded text-left ${
+          activeTab === "shippers" 
+            ? "bg-[#B31942] text-white" 
+            : "text-gray-700"
+        }`}
+      >
+        Shippers/Brokers
+      </button>
+    </div>
+
+    {/* Mobile Sub Navigation */}
+    <div className="mt-4 p-4 rounded-lg">
+      {activeTab === "carriers" ? (
+        <div className="flex flex-col text-black space-y-2">
+          <Link to='/findload' className="py-2 border-b border-gray-300 hover:bg-blue-500 hover:text-white transition-all">Find Loads</Link>
+          <Link to='/loadmaps' className="py-2 border-b border-gray-300 hover:bg-blue-500 hover:text-white transition-all">Loads Map</Link>
+          <Link to='/posttruck' className="py-2 border-b border-gray-300 hover:bg-blue-500 hover:text-white transition-all">Post Truck</Link>
+          <Link to='/viewtruck' className="py-2 hover:bg-blue-500 hover:text-white transition-all">View My Truck</Link>
         </div>
-      </div>
+      ) : (
+        <div className="flex flex-col text-black space-y-2">
+          <Link to='/findtruck' className="py-2 border-b border-gray-300 hover:bg-blue-500 hover:text-white transition-all">Find Trucks</Link>
+          <Link to='/truckmap' className="py-2 border-b border-gray-300 hover:bg-blue-500 hover:text-white transition-all">Track Maps</Link>
+          <Link to='/postlead' className="py-2 border-b border-gray-300 hover:bg-blue-500 hover:text-white transition-all">Post Loads</Link>
+          <Link to='/viewload' className="py-2 hover:bg-blue-500 hover:text-white transition-all">View My Loads</Link>
+        </div>
+      )}
+    </div>
 
+    {/* Mobile Call Now Button */}
+    <button className="w-full mt-4 bg-[#002868] text-white px-6 py-3 rounded-lg hover:bg-[#001845] transition-all">
+      CALL NOW
+    </button>
+
+   
+  </div>
+)}
       {/* Hero Content */}
-      <div className="max-w-4xl mx-auto text-white relative pb-20 px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20">
+      <div className="max-w-4xl mx-auto lg:mt-20 text-white relative pb-20 px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20">
         <p className="bg-black text-red-500 px-6 py-2 inline-block rounded-lg text-2xl sm:text-3xl shadow-xl">
           Expert dispatch for optimized logistics
         </p>
@@ -165,3 +190,5 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
+
