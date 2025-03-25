@@ -3,6 +3,7 @@ import HeroSection from "../../HeroSection";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useEffect, useRef, useState } from "react";
+import TrailerOptions from "./TrailersOptions";
 export default function FindLoad() {
     const [showCalendar, setShowCalendar] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
@@ -11,7 +12,7 @@ export default function FindLoad() {
   const [selectedOption, setSelectedOption] = useState("Sort by: Age (newest)");
   const dropdownRef = useRef(null);
   const [open, setOpen] = useState(false);
-
+  const [showOptions, setShowOptions] = useState(false);
   const options = [
     "Sort by: Age (newest)", "Age (newest)", "Payrate (highest)", "28d Avg Market Rate (highest)", 
     "Est. Rate per Mile (highest)", "Deadhead (shortest)", "Trip Length (longest)", "Origin City (A-Z)", 
@@ -150,11 +151,12 @@ export default function FindLoad() {
 
            {/* Filter Buttons */}
 <div className="grid grid-cols-2 gap-2 w-full sm:grid-cols-1 md:flex md:flex-wrap">
-<input 
-    type="text" 
-    placeholder="Trailer Type: Any" 
+<input
+    type="text"
+    placeholder="Trailer Type: Any"
+    onFocus={() => setShowOptions(true)}
     className="border border-black px-4 py-2 rounded-lg bg-white text-gray-600 text-sm flex-1 md:flex-none md:px-8"
-/>  
+  />
 
 <select 
     className="border border-black px-4 py-2 rounded-lg bg-white text-gray-600 text-sm flex-1 md:flex-none md:px-6 appearance-none"
@@ -165,11 +167,11 @@ export default function FindLoad() {
 </select>
 
 
-<div className="relative w-64" ref={calendarRef}>
+<div className="relative w-62" ref={calendarRef}>
       {/* Input Field */}
       <input
         type="text"
-        className="border border-black px-4 py-2 rounded-lg bg-white text-gray-600 text-sm w-full cursor-pointer"
+        className="border border-black px-4 py-2 rounded-lg bg-white text-gray-600 text-sm w-[155px] md:w-[230px] cursor-pointer"
         placeholder="Ship Date: Any"
         value={selectedDate ? selectedDate.toLocaleDateString() : ""}
         onFocus={() => setShowCalendar(true)}
@@ -178,7 +180,7 @@ export default function FindLoad() {
 
       {/* Calendar Popup */}
       {showCalendar && (
-        <div className="absolute top-full left-0 mt-2 bg-white border border-gray-300 rounded-lg shadow-lg z-50">
+        <div className="absolute top-full  left-0 mt-2 bg-white border border-gray-300 rounded-lg shadow-lg z-50">
           <DatePicker
             selected={selectedDate}
             onChange={(date) => {
@@ -194,7 +196,7 @@ export default function FindLoad() {
     <div className="relative w-56" ref={dropdownRef}>
       {/* Input Button */}
       <button
-        className="border border-black px-4 py-2 rounded-lg bg-white text-gray-600 text-sm w-full text-left"
+        className="border border-black px-4 py-2 rounded-lg bg-white text-gray-600 text-sm w-[165px] md:w-[240px] text-left"
         onClick={() => setShowDropdown(!showDropdown)}
       >
         {selectedOption}
@@ -220,6 +222,7 @@ export default function FindLoad() {
         </div>
       )}
     </div>
+    {showOptions && <TrailerOptions setShowOptions={setShowOptions} />}
 </div>
 
            {/* Filter Buttons */}
@@ -257,12 +260,12 @@ export default function FindLoad() {
         </div>
     </div>
 </div>
-<div className="flex justify-center items-center pt-10 pb-10">
-    <p className="text-blue-500 text-4xl">
-        
-Please enter a State to begin searching for loads.
+<div className="flex justify-center items-center  text-center">
+    <p className="text-blue-500 text-2xl md:text-4xl lg:text-3xl font-semibold">
+        Please enter a State to begin searching for loads.
     </p>
 </div>
+
     </div>
     
   );
